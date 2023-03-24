@@ -15,7 +15,7 @@ package tdx
 import "C"
 import (
 	"crypto/sha512"
-	"encoding/json"
+//	"encoding/json"
 	"unsafe"
 
 	"github.com/intel/amber/v1/client"
@@ -64,17 +64,17 @@ func (adapter *TdxAdapter) CollectEvidence(nonce []byte) (*client.Evidence, erro
 	}
 
 	var eventLog []byte
-	if adapter.EvLogParser != nil {
-		rtmrEventLogs, err := adapter.EvLogParser.GetEventLogs()
-		if err != nil {
-			return nil, errors.Wrap(err, "There was an error while collecting RTMR Event Log Data")
-		}
+	// if adapter.EvLogParser != nil {
+	// 	rtmrEventLogs, err := adapter.EvLogParser.GetEventLogs()
+	// 	if err != nil {
+	// 		return nil, errors.Wrap(err, "There was an error while collecting RTMR Event Log Data")
+	// 	}
 
-		eventLog, err = json.Marshal(rtmrEventLogs)
-		if err != nil {
-			return nil, errors.Wrap(err, "Error while marshalling RTMR Event Log Data")
-		}
-	}
+	// 	eventLog, err = json.Marshal(rtmrEventLogs)
+	// 	if err != nil {
+	// 		return nil, errors.Wrap(err, "Error while marshalling RTMR Event Log Data")
+	// 	}
+	// }
 
 	return &client.Evidence{
 		Type:     1,
